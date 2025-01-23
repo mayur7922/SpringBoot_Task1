@@ -4,6 +4,7 @@ import com.example.restapi.model.Book;
 import com.example.restapi.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.example.restapi.exceptions.BookNotFoundException;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,7 +36,7 @@ public class BookService {
     }
 
     public Book updateBook(Long id, Book book) {
-        Book existingBook = bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book not found"));
+        Book existingBook = bookRepository.findById(id).orElseThrow(() -> new BookNotFoundException("Book with id " + id + " not found."));
 
         System.out.println("Here");
 

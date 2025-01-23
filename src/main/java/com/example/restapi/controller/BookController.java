@@ -44,27 +44,6 @@ public class BookController {
         return bookService.createBook(book);
     }
 
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<Book> updateBookById(@PathVariable Long id, @RequestBody Map<String, Object> updates) {
-//        Optional<Book> book = bookService.getBookById(id);
-//        updates.forEach((key, value) -> {
-//            switch (key) {
-//                case "title":
-//                    book.setTitle((String) value);
-//                    break;
-//                case "author":
-//                    book.setAuthor((String) value);
-//                    break;
-//                default:
-//                    throw new IllegalArgumentException("Invalid field: " + key);
-//            }
-//        });
-//
-//        // Save the updated book
-//        BookRepository.save(book);
-//        return book.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-//    }
-
     @PatchMapping("/{id}")
     public Book updateUser(@PathVariable Long id, @RequestBody Book book) {
         return bookService.updateBook(id, book);
